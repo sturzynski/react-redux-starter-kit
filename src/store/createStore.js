@@ -2,8 +2,9 @@ import { applyMiddleware, compose, createStore } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
 import rootReducer from '../reducers'
+import { Map } from 'immutable';
 
-export default (initialState = {}, history) => {
+export default (initialState = Map({}), history) => {
   // ======================================================
   // Middleware Configuration
   // ======================================================
