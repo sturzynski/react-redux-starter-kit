@@ -1,7 +1,7 @@
 import { applyMiddleware, compose, createStore } from 'redux'
 import { routerMiddleware } from 'react-router-redux'
 import thunk from 'redux-thunk'
-import makeRootReducer from './reducers'
+import rootReducer from '../reducers'
 
 export default (initialState = {}, history) => {
   // ======================================================
@@ -24,13 +24,14 @@ export default (initialState = {}, history) => {
   // Store Instantiation and HMR Setup
   // ======================================================
   const store = createStore(
-    makeRootReducer(),
+    rootReducer,
     initialState,
     compose(
       applyMiddleware(...middleware),
       ...enhancers
     )
   )
+  /*
   store.asyncReducers = {}
 
   if (module.hot) {
@@ -39,6 +40,6 @@ export default (initialState = {}, history) => {
       store.replaceReducer(reducers)
     })
   }
-
+  */
   return store
 }
