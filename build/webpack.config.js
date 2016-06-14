@@ -58,6 +58,9 @@ webpackConfig.plugins = [
     minify: {
       collapseWhitespace: true
     }
+  }),
+  new webpack.ProvidePlugin({
+    "window.Tether": "tether"
   })
 ]
 
@@ -140,6 +143,13 @@ webpackConfig.module.loaders = [{
   test: /\.json$/,
   loader: 'json'
 }]
+
+//jquery import loader
+webpackConfig.module.loaders.push({ 
+  test: /bootstrap[\/\\]dist[\/\\]js[\/\\]umd[\/\\]/, 
+  loader: 'imports?jQuery=jquery' 
+})
+
 
 // ------------------------------------
 // Style Loaders
